@@ -1,0 +1,14 @@
+CREATE DATABASE GPdatabase;
+
+USE GPdatabase; -- SQL Client only --
+
+CREATE TABLE logindetails(UserID CHAR(6),PassID INT,Psswrd VARCHAR(255), PRIMARY KEY (UserID));
+
+CREATE TABLE Patients(UserID CHAR(6),FullName VARCHAR(255),DOB YEAR, Email VARCHAR(255), PhoneNum INT, DocID CHAR(6), FOREIGN KEY (UserID) REFERENCES logindetails (UserID), FOREIGN KEY (DocID) REFERENCES Doctors(DocID) );
+
+CREATE TABLE Doctors(DocID CHAR(6),FullName VARCHAR(255), Email VARCHAR(255), PhoneNum INT, PRIMARY KEY (DocID));
+
+CREATE TABLE Booking(BID CHAR(2), DocID CHAR(6), TheDate DATE,TheTime TIME, UserID CHAR(6), FOREIGN KEY (DocID) REFERENCES Doctors (DocID), FOREIGN KEY (UserID) REFERENCES Patients (UserID));
+
+-- How to insert --
+INSERT INTO
